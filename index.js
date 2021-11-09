@@ -9,8 +9,8 @@ var fileFormatName2;
 if (!url) {
     throw 'Please provide a URL as the first argument.';
 }
-if (format !== "1" && format !== "2") {
-    throw 'Please specify the format as 1 or 2 as the second argument.';
+if (format !== "format1" && format !== "format2") {
+    throw 'Please specify the format as format1 or format2 as the second argument.';
 }
 
 async function run() {
@@ -26,12 +26,12 @@ async function run() {
         throw 'Board title does not exist. Please check if provided URL is correct.'
     }
 
-    if(format === "1"){
+    if(format === "format1"){
         if (!file) {
             throw 'Please provide a file name as the third argument.'
         }
         return format1(page, boardTitle);
-    }else if(format === "2"){
+    }else if(format === "format2"){
         fileFormatName2 = boardTitle.replace(/ /g, "") + ".csv";
         return format2(page);
     }
@@ -114,7 +114,7 @@ async function format2(page) {
 }
 
 function writeToFile(filePath, data) {
-    if(format === "2") filePath = fileFormatName2;
+    if(format === "format2") filePath = fileFormatName2;
     const resolvedPath = path.resolve(filePath || `../${data.split('\n')[0].replace('/', '')}.txt`);
     fs.writeFile(resolvedPath, data, (error) => {
         if (error) {

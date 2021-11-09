@@ -84,7 +84,7 @@ async function format2(page) {
         }
 
         const messages = await columns[i].$$('.easy-board-front');
-        const messagesLength = messages.length;
+        let messagesLength = messages.length;
         if(messagesLength > rows) rows = messagesLength + 1;
         for (let j = 0; j < messagesLength; j++) {
             const messageText = await messages[j].$eval('.easy-card-main .easy-card-main-content .text', (node) => node.innerText.trim());

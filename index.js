@@ -90,7 +90,7 @@ async function format2(page) {
             const messageText = await messages[j].$eval('.easy-card-main .easy-card-main-content .text', (node) => node.innerText.trim());
             const votes = await messages[j].$eval('.easy-card-votes-container .easy-badge-votes', (node) => node.innerText.trim());
             if(votes > 0) {
-                parsedTextArray[i].push(messageText);
+                parsedTextArray[i].push(`${messageText} (${votes})`);
             }else{
                 parsedTextArray[i].push("");
             }
